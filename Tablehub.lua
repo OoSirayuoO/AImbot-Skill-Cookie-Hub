@@ -4085,7 +4085,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-5316.55859, 12.2370615, 8517.2998, 0.588437557, -1.37880001e-08, -0.808542669, -2.10116209e-08, 1, -3.23446478e-08, 0.808542669, 3.60215964e-08, 0.588437557)
 			CFrameMon = CFrame.new(-5483.29248, 9.33393669, 8413.07031, 0.909917235, -1.46153933e-09, -0.414789826, -6.77904288e-10, 1, -5.01067277e-09, 0.414789826, 4.84048535e-09, 0.909917235)
 		elseif MyLevel == 300 or MyLevel <= 374 then -- Military Spy
-			Ms = "Military Spy [Lv. 330]"
+			Ms = "Military Spy [Lv. 325]"
 			NaemQuest = "MagmaQuest"
 			LevelQuest = 2
 			NameMon = "Military Spy"
