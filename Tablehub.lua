@@ -4042,7 +4042,7 @@ function CheckQuest()
 			NameMon = "Sky Bandit"
 			CFrameQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
 			CFrameMon = CFrame.new(-4996.53906, 278.410187, -2828.92822, -0.984909654, 0, 0.173069984, 0, 1, 0, -0.173069984, 0, -0.984909654)
-		elseif MyLevel == 175 or MyLevel <= 224 then -- Dark Master
+		elseif MyLevel == 175 or MyLevel <= 249 then -- Dark Master
 			Ms = "Dark Master [Lv. 175]"
 			NaemQuest = "SkyQuest"
 			LevelQuest = 2
