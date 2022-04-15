@@ -202,9 +202,9 @@ end]]
 print(tostring(joingame_timr).." sec. to join the Game")
 pcall(function()
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Table hub Script",
-        Text = "Script by Sea\nRimuru#9999",
-        Duration = 60
+        Title = "Vector Hub",
+        Text = "Script by Ohm\nOoSirayuoO",
+        Duration = 10
         })
 end)
 spawn(function()
@@ -3536,7 +3536,7 @@ end
 warn("Imported Ui")
 
 local win = EngUi:Window("")
-local serv = win:Server("Table Hub", "")
+local serv = win:Server("Vector Hub", "")
 world1 = game.PlaceId == 2753915549
 world2 = game.PlaceId == 4442272183
 world3 = game.PlaceId == 7449423635
@@ -6321,31 +6321,7 @@ if game.PlaceId == 7449423635 then
         end
     end)
 end
-candylable = item40:Label("Candy : ")
-item40:Toggle("Candy Trade (x2 xp) ",_G.CandyTrade,function(state)
-	_G.CandyTrade = state
-end)
-spawn(function()
-	while wait(2) do
-		pcall(function()
-            local args = {[1] = "Candies",[2] = "Check"}
-			cdtt = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-            candylable:Refresh(tostring(cdtt))
-			if _G.CandyTrade then
-				if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Level.Exp.text, "2x") then
-				elseif cdtt >= 51 then
-					local args = {
-					[1] = "Candies",
-					[2] = "Buy",
-					[3] = 1,
-					[4] = 1
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-			end
-		end)
-	end
-end)
+
 item40:Line()
 item40:Toggle("Auto Random Fruit",_G.RandomFruit,function(vu)
     _G.RandomFruit = vu
@@ -7150,5 +7126,4 @@ Shop40:Button("Remove Fruit (10 click to remove)",function()
 end)
 
 Script_loaded_ = true
-
 
