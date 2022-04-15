@@ -6576,10 +6576,6 @@ end)
 
 item40:Line()
 item40:Label("Stats Function")
-item40:Toggle("Fully auto stats", _G.Fullystats, function(state)
-    _G.Fullystats = state
-end)
-
 item40:Toggle("Melee",_G.melee,function(state)
     _G.melee = state 
 end)
@@ -6607,130 +6603,28 @@ end)
 
 
 spawn(function()
-    repeat wait()
-        if _G.Fullystats then
-            pcall(function()
-                Mpoint = game.Players.localPlayer.Data.Stats.Melee.Level.Value
-                Dpoint = game.Players.localPlayer.Data.Stats.Defense.Level.Value
-                Dvilpoint = game.Players.localPlayer.Data.Stats["Demon Fruit"].Level.Value
-                stat = game.Players.localPlayer.Data.Points.Value
-                if stat >= 2 then
-                    if Dpoint <= 249 then
-                        spawn(function()
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Melee",
-                                [3] = 1
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end)
-                        spawn(function()
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Defense",
-                                [3] = 1
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end)
-                    end
-
-
-                    if Dpoint >= 250 and Mpoint < 2200 then
-                        spawn(function()
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Melee",
-                                [3] = 1
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end)
-                    end
-
-                    
-                    if Mpoint == 2200 and Dpoint <= 1800 then
-                        spawn(function()
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Defense",
-                                [3] = 1
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end)
-                    end
-                    
-                    if Mpoint == 2100 and Dpoint >= 1800 and Dvilpoint <= 1500 then
-                        spawn(function()
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Demon Fruit",
-                                [3] = 1
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end)
-                    end
-                end
-            end)
-        end
-    until Mpoint == 2200 and Dpoint >= 1800 and Dvilpoint >= 1500
-end)
-
-
-spawn(function()
-    while wait() do
-        stat = game.Players.localPlayer.Data.Points.Value
-        if stat >= PointStats then
-            if _G.melee then
-                spawn(function()
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Melee",
-                        [3] = PointStats
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                end)
-            end 
-            if _G.defense then
-                spawn(function()
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Defense",
-                        [3] = PointStats
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                end)
-            end 
-            if _G.sword then
-                spawn(function()
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Sword",
-                        [3] = PointStats
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                end)
-            end 
-            if _G.gun then
-                spawn(function()
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Gun",
-                        [3] = PointStats
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                end)
-            end 
-            if _G.DevilFruit then
-                spawn(function()
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Demon Fruit",
-                        [3] = PointStats
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                end)
+	while wait(.1) do
+        pcall(function()
+            if _G.MaxPoint then
+                PointStats = game:GetService("Players").LocalPlayer.Data.Points.Value
             end
-        end
-    end
+            if _G.melee then
+			    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Melee", PointStats)
+		    end
+            if _G.defense then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Defense", PointStats)
+            end
+            if _G.gun then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Gun", PointStats)
+            end
+            if _G.sword then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Sword", PointStats)
+            end
+            if _G.DevilFruit then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Demon Fruit", PointStats)
+            end
+        end)
+	end
 end)
 
 tp40:Label("Server Function")
@@ -7241,5 +7135,4 @@ Shop40:Button("Remove Fruit (10 click to remove)",function()
 end)
 
 Script_loaded_ = true
-
 
