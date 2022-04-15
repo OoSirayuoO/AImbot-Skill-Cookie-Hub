@@ -4042,13 +4042,27 @@ function CheckQuest()
 			NameMon = "Sky Bandit"
 			CFrameQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
 			CFrameMon = CFrame.new(-4996.53906, 278.410187, -2828.92822, -0.984909654, 0, 0.173069984, 0, 1, 0, -0.173069984, 0, -0.984909654)
-		elseif MyLevel == 175 or MyLevel <= 249 then -- Dark Master
+		elseif MyLevel == 175 or MyLevel <= 189 then -- Dark Master
 			Ms = "Dark Master [Lv. 175]"
 			NaemQuest = "SkyQuest"
 			LevelQuest = 2
 			NameMon = "Dark Master"
 			CFrameQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
 			CFrameMon = CFrame.new(-5266.46143, 388.9953, -2287.84741, -0.635293067, -2.56842156e-08, 0.772271156, -2.77735168e-09, 1, 3.09732968e-08, -0.772271156, 1.75322512e-08, -0.635293067)
+		elseif MyLevel == 190 or MyLevel <= 209 then
+			Ms = "Prisoner [Lv. 190]"
+			NaemQuest = "PrisonerQuest"
+			LevelQuest = 1
+			NameMon = "Prisoner"
+			CFrameQuest = CFrame.new(5302.24267578125, 1.6551545858383179, 474.6558532714844)
+			CFrameMon = CFrame.new(5153.66357421875, 3.460181713104248, 437.8376770019531)
+		elseif MyLevel == 210 or MyLevel <= 249 then		-- Toga Warrior
+			Ms = "Dangerous Prisoner [Lv. 210]"
+			NaemQuest = "PrisonerQuest"
+			LevelQuest = 2
+			NameMon = "Dangerous Prisoner"
+			CFrameQuest = CFrame.new(5302.24267578125, 1.6551545858383179, 474.6558532714844)
+			CFrameMon = CFrame.new(5582.2177734375, 1.6495773792266846, 723.5036010742188)	
 		elseif MyLevel == 250 or MyLevel <= 274 then -- Toga Warrior
 			Ms = "Toga Warrior [Lv. 250]"
 			NaemQuest = "ColosseumQuest"
@@ -4837,7 +4851,7 @@ coroutine.wrap(function()
     game:GetService("RunService").Stepped:Connect(function()
         if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack then
             getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack = 0
-            getupvalues(CombatFramework)[2]['activeController'].hitboxMagnitude = 200
+            getupvalues(CombatFramework)[2]['activeController'].hitboxMagnitude = 300
             getupvalues(CombatFramework)[2]['activeController']:attack()
         end
     end)
@@ -6576,24 +6590,25 @@ end)
 
 item40:Line()
 item40:Label("Stats Function")
+
 item40:Toggle("Melee",_G.melee,function(state)
-    _G.melee = state 
+    _G.Melee = state 
 end)
 
 item40:Toggle("Defense",_G.defense,function(state)
-    _G.defense = state
+    _G.Defense = state
 end)
 
 item40:Toggle("Sword",_G.sword,function(state)
-    _G.sword = state
+    _G.Sword = state
 end)
 
 item40:Toggle("Gun",_G.gun,function(state)
-    _G.gun = state
+    _G.Gun = state
 end)
 
 item40:Toggle("Devil Fruit",_G.DevilFruit,function(state)
-    _G.DevilFruit = state
+    _G.Fruit = state
 end)
 PointStats = 1
 item40:Slider("Point ",1,500,PointStats,function(value)
@@ -6608,19 +6623,19 @@ spawn(function()
             if _G.MaxPoint then
                 PointStats = game:GetService("Players").LocalPlayer.Data.Points.Value
             end
-            if _G.melee then
+            if _G.Melee then
 			    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Melee", PointStats)
 		    end
-            if _G.defense then
+            if _G.Defense then
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Defense", PointStats)
             end
-            if _G.gun then
+            if _G.Gun then
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Gun", PointStats)
             end
-            if _G.sword then
+            if _G.Sword then
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Sword", PointStats)
             end
-            if _G.DevilFruit then
+            if _G.Fruit then
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint","Demon Fruit", PointStats)
             end
         end)
@@ -7135,4 +7150,5 @@ Shop40:Button("Remove Fruit (10 click to remove)",function()
 end)
 
 Script_loaded_ = true
+
 
