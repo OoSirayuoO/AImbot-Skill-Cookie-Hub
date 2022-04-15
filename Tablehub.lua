@@ -6856,10 +6856,10 @@ other40:Toggle("Auto Redeem all codes", _G.AutoRedeem, function(state)
     _G.AutoRedeem = state
 end)
 spawn(function()
-    while wait(5) do
+    while wait(1) do
         if _G.AutoRedeem then
             MyLevel = game.Players.localPlayer.Data.Level.value
-            if MyLevel >= _G.RedeemOnLv-1 then
+            if MyLevel >= _G.RedeemOnLv-0 then
                 for r,coderd in pairs(reedeemCODE) do
                     pcall(function()
                         local args = {
